@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand mx-2" href="{% url 'index-page' %}">Prendas Adrian's Blog</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link disabled" href="#">
+          {% if request.resolver_match.url_name == "index-page"%} 
+            Index
+          {% else %}
+            {{ post.title|title }}
+          {% endif %}
+          </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Contact
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="mailto:prendas.adrian@proton.me">prendas.adrian@proton.me</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="https://www.facebook.com/prendas.adrian">Facebook</a>
+          <a class="dropdown-item" href="https://www.linkedin.com/in/prendas-adrian-/">LinkedIn</a>
+          <a class="dropdown-item" href="https://wa.me/prendas.adrian">Whatsapp</a>
+          <a class="dropdown-item" href="https://x.com/prendas_adrian">X</a>
+          <a class="dropdown-item" href="https://t.me/prendas_adrian">Telegram</a>
+          <a class="dropdown-item" href="https://www.instagram.com/prendas.adrian/">Instagram</a>
+          <a class="dropdown-item" href="https://www.threads.com/@prendas.adrian">Threads</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="tel:+50687950618">+506 8795 0618</a>
+        </div>
+      </li>
+    </ul>
+    <form class="d-flex align-items-center my-2 my-lg-0">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
