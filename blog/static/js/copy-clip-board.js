@@ -22,12 +22,12 @@ document.addEventListener('DOMContentLoaded', function () {
         var btn = document.createElement('button');
         btn.className = 'copy-btn';
         btn.type = 'button';
-        btn.innerText = 'Copiar';
+        btn.innerText = 'Copy';
         btn.addEventListener('click', function () {
             var text = code.innerText;
             copyTextToClipboard(text).then(function () {
                 var original = btn.innerText;
-                btn.innerText = 'Copiado!';
+                btn.innerText = 'Copied!';
                 setTimeout(function () { btn.innerText = original; }, 1500);
             }).catch(function () {
                 var original = btn.innerText;
