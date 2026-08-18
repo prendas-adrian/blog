@@ -1,27 +1,34 @@
 {% extends "base.html" %}
 {% load markdown_filter %}
-
+{% load static %}
 {% block header %}
 <link id="markdown-theme-css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css">
-
-<style>
-    a{
-
-    }
-</style>
+<link rel="stylesheet" href="{% static "css/copy-clip-board.css"%}">
 {% endblock %}
 
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
-    <div class="container border rounded-3 p-3 my-3">
-        <div>
-            <h1>{{ post.title }}</h1>
-            <p>{{ post.description }}</p>
-        </div>
-        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid" />
-        <div>
-            {{ post.content|render_markdown|safe }}
+    <div class="container p-3 my-5">
+        <div class="container-fluid border rounded-3 p-3 my5">
+            <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid" />
+            <div>
+                <p>{{post.created_at|date:"d M Y"}}</p>
+                <h1>{{ post.title }}</h1>
+            </div>
+            <div class="d-flex flex-wrap gap-2 mt-4">
+                {% for tag in post.tags.all %}
+                    <span class="badge {% cycle 'text-bg-warning' 'text-bg-primary' 'text-bg-secondary' 'text-bg-success' 'text-bg-danger' 'text-bg-light' 'text-bg-info' 'text-bg-dark' %}">
+                        {{ tag }}
+                    </span>
+                {% endfor %}
+            </div>
+            <div class="mt-4">
+                <p>{{ post.description|render_markdown|safe}}</p>
+            </div>
+            <div>
+                {{ post.content|render_markdown|safe }}
+            </div>
         </div>
     </div>
 {% endblock %}
@@ -29,4 +36,5 @@
 {% block scripts %}
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js" defer></script>
+<script src="{% static "js/copy-clip-board.js"%}" defer></script>
 {% endblock %}
