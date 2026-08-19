@@ -43,36 +43,29 @@ Esto inicia:
 - PostgreSQL en el puerto `5432`
 - pgAdmin en `http://localhost:5050` (credenciales: `admin@admin.com` / `admin`)
 
-### 4. Aplicar migraciones
+### 4. Ejecutar el entrypoint
 
 ```bash
-python manage.py migrate
+./entrypoint.sh
 ```
 
-### 5. Crear superusuario
+Eso hara:
+- Ejecutara las migraciones
+- Creara un superusuario
+- Cargara los fixtures 
 
-```bash
-python manage.py createsuperuser
-```
-
-### 6. Carga los fixtures
-
-```bash
-python manage.py loaddata blog/fixtures/data.json
-```
+Puedes modificar el entrypoint para cambiar la configuración del superusuario
 
 
-### 7. Ejecutar el servidor de desarrollo
+### 5. Ejecutar el servidor de desarrollo
 
 ```bash
 python manage.py runserver
 ```
 
-
-
 ## Uso del Admin
 
-1. Accede a `/admin/` con el superusuario creado
+1. Accede a `/admin/` con el superusuario creado, username:  `admin`, password: `admin`
 2. Crea posts con título, descripción, contenido (Markdown), imagen y tags
 
 ## Licencia
