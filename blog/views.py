@@ -12,10 +12,8 @@ class IndexView(ListView):
     template_name = 'index.html'
     context_object_name = 'posts'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["bg_tags"] = ("bg-primary", "bg-secondary", "bg-success", "bg-danger", "bg-warning", "bg-info", "bg-light", "bg-dark")
-        return context    
+    def get_queryset(self):
+        return super().get_queryset().order_by("-updated_at")  
     
     def post(self, request):
         # Ensure object_list is set so get_context_data() can build the context
